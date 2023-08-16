@@ -43,3 +43,16 @@ body {
     margin-top: 10px;
 
   }
+
+
+  #uploadButton {
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  #uploadButton:hover {
+    background-color: #2980b9;
+  }

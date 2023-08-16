@@ -1,9 +1,10 @@
 const fileInput = document.getElementById('fileInput');
 const fileInfo = document.getElementById('fileInfo');
 const preview = document.getElementById('preview');
+const progressBar = document.getElementById('progressBar');
 
 const allowedExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
-const maxFileSize = 5 * 1024 * 1024; // 5 MB in bytes
+const maxFileSize = 100 * 1024 * 1024; // 5 MB in bytes
 
 fileInput.addEventListener('change', function(event) {
   const selectedFile = event.target.files[0];
@@ -32,4 +33,21 @@ fileInput.addEventListener('change', function(event) {
   };
 
   reader.readAsDataURL(selectedFile);
+
+  // Use Axios to upload the file
+  const formData = new FormData();
+  formData.append('file', selectedFile);
+
+  axios.post('http://localhost:3000/upload', formData, {
+    onUploadProgress: progressEvent => {
+      const percentCompleted = Math.round((progressEvent.loaded * 100) / progressEvent.total);
+      progressBar.value = percentCompleted;
+    }
+  })
+  .then(response => {
+    console.log('Archivo subido exitosamente:', response.data);
+  })
+  .catch(error => {
+    console.error('Error al subir el archivo:', error);
+  });
 });
