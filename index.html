@@ -1,16 +1,37 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subir Archivo con Progreso</title>
   <title>Ejemplo HTML5 File API</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
- 
-<input type="file" id="fileInput">
-<div id="fileInfo"></div>
-<img id="preview">
- 
-<script src="script.js"></script>
- 
+  <h1>Subir Archivo con Progreso</h1>
+  <input type="file" id="fileInput">
+  <button id="uploadButton">Subir Archivo</button>
+  <div id="fileInfo"></div>
+  <img id="preview">
+  <progress id="progressBar" value="0" max="100" style="display: none;"></progress>
+
+  <!-- Incluir la biblioteca Axios (asegúrate de ajustar la URL según tu entorno) -->
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+
+   
+  <script src="script.js"></script>
+
+
+  <script>
+    // Aquí colocar el código JavaScript modificado que te proporcioné anteriormente
+
+    const uploadButton = document.getElementById('uploadButton');
+    
+    uploadButton.addEventListener('click', function() {
+      // Disparar la carga del archivo cuando se haga clic en el botón
+      fileInput.click();
+    });
+  </script>
 </body>
 </html>
